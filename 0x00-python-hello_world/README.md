@@ -28,3 +28,14 @@ The Python code will be saved in the environment variable $PYCODE
 	guillaume@ubuntu:~/py/0x00$
 ```
 
+## Task 2 - Hello, print
+Write a Python script that prints exactly "Programming is like building a multilingual puzzle, followed by a new line.
+
+Use the function print
+
+```bash
+guillaume@ubuntu:~/py/0x00$ ./2-print.py 
+"Programming is like building a multilingual puzzle
+guillaume@ubuntu:~/py/0x00$
+```
+
