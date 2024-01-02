@@ -151,3 +151,28 @@ guillaume@ubuntu:~/py/0x00$ wc -l 7-edges.py
 8 7-edges.py
 guillaume@ubuntu:~/py/0x00$
 ```
+
+## Task 8 - Create a new sentence
+Complete this source code to print object-oriented programming with Python, followed by a new line.
+
+You can find the source code here:
+
+```python
+#!/usr/bin/python3
+str = "Python is an interpreted, interactive, object-oriented programming\
+ language that combines remarkable power with very clear syntax"
+# YOUR CODE GOES HERE. PLEASE REMOVE THIS LINE
+print(str)
+```
+You are not allowed to use any loops or conditional statements
+Your program should be exactly 5 lines long
+You are not allowed to create new variables
+You are not allowed to use string literals
+
+```bash
+guillaume@ubuntu:~/py/0x00$ ./8-concat_edges.py
+object-oriented programming with Python
+guillaume@ubuntu:~/py/0x00$ wc -l 8-concat_edges.py
+5 8-concat_edges.py
+guillaume@ubuntu:~/py/0x00$ 
+```
