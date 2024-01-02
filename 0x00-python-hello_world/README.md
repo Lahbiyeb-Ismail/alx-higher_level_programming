@@ -72,7 +72,7 @@ Float: 3.14
 guillaume@ubuntu:~/py/0x00$ 
 ```
 
-## Task 4 - Print string
+## Task 5 - Print string
 Complete this source code in order to print 3 times a string stored in the variable str, followed by its first 9 characters.
 
 You can find the source code here:
@@ -96,4 +96,29 @@ guillaume@ubuntu:~/py/0x00$ ./5-print_string.py
 Holberton SchoolHolberton SchoolHolberton School
 Holberton
 guillaume@ubuntu:~/py/0x00$ 
+```
+
+## Task 6 - Play with strings
+Complete this source code to print Welcome to Holberton School!
+
+You can find the source code here:
+
+```python
+#!/usr/bin/python3
+str1 = "Holberton"
+str2 = "School"
+# YOUR CODE GOES HERE. PLEASE REMOVE THIS LINE
+print(f"Welcome to {str1}!")
+```
+
+You are not allowed to use any loops or conditional statements.
+You have to use the variables str1 and str2 in your new line of code
+Your program should be exactly 5 lines long
+
+```bash
+guillaume@ubuntu:~/py/0x00$ ./6-concat.py
+Welcome to Holberton School!
+guillaume@ubuntu:~/py/0x00$ wc -l 6-concat.py
+5 6-concat.py
+guillaume@ubuntu:~/py/0x00$
 ```
