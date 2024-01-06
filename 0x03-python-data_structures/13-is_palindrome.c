@@ -13,59 +13,41 @@
  *
  * Return: 1 if the linked list is a palindrome, 0 otherwise.
  */
-
 int is_palindrome(listint_t **head)
 {
-	listint_t *tail;
-	listint_t *current_node;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
 
-	if (*head == NULL || (*head)->next == NULL)
-		return (1);
-
-	current_node = *head;
-
-	while (current_node->next)
-		current_node = current_node->next;
-
-	tail = current_node;
-
-	while (*head == tail)
+	while (fast != NULL && fast->next != NULL)
 	{
-		if ((*head)->n != tail->n)
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+
+	listint_t *prev = NULL;
+	listint_t *current = slow;
+	listint_t *temp;
+
+	while (current != NULL)
+	{
+		temp = current->next;
+		current->next = prev;
+		prev = current;
+		current = temp;
+	}
+
+	listint_t *left = *head;
+	listint_t *right = prev;
+
+	while (right != NULL)
+	{
+		if (left->n != right->n)
 			return (0);
 
-		*head = (*head)->next;
-		tail = get_previous_node(*head);
+		left = left->next;
+		right = right->next;
 	}
 
 	return (1);
 }
 
-/**
- * get_previous_node - Retrieves the previous node of a given node
- * in a linked list.
- *
- * This function traverses the linked list starting from the
- * given node and returns the node that precedes it.
- * If the given node is the head of the list or if the list is empty,
- * it returns NULL.
- *
- * @node: A pointer to the node for which the previous node needs to be found.
- *
- * Return: A pointer to the previous node, or NULL if the given
- * node is the head of the list or if the list is empty.
- */
-
-listint_t *get_previous_node(listint_t *node)
-{
-	listint_t *prev = NULL;
-	listint_t *current = node;
-
-	while (current && current->next)
-	{
-		prev = current;
-		current = current->next;
-	}
-
-	return (prev);
-}
