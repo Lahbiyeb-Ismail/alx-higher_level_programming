@@ -33,6 +33,21 @@ class Square:
         square_area = self.size * self.size
         return square_area
 
+    def my_print(self):
+        """Print a square of size (__size)
+
+        Args:
+            param1(self): refer to instance
+
+        Return:
+            None
+        """
+        if self.size == 0:
+            print("")
+
+        for _ in range(self.size):
+            print("#" * self.size)
+
     @property
     def size(self):
         """Public instance method that retrieve the current square size
@@ -62,18 +77,3 @@ class Square:
             raise ValueError("size must be >= 0")
 
         self.__size = value
-
-    def my_print(self):
-        """Print a square of size (__size)
-
-        Args:
-            param1(self): refer to instance
-
-        Return:
-            None
-        """
-        if self.size == 0:
-            print("")
-
-        for _ in range(self.size):
-            print("#" * self.size)
