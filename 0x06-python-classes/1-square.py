@@ -5,6 +5,17 @@ A Square class that defines a square
 
 
 class Square:
+    """Square with size"""
+
     def __init__(self, size) -> None:
-        # Private Attribute
+        """
+        Constructor function
+
+        Args:
+        param1 (self): instance
+        param2 (int): size of the square
+
+        Returns:
+        - None
+        """
         self.__size = size
