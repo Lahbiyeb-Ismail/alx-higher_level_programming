@@ -89,20 +89,3 @@ class Square:
             raise ValueError("size must be >= 0")
 
         self.__size = value
-
-
-s_5 = Square(5)
-s_6 = Square(6)
-
-if s_5 < s_6:
-    print("Square 5 < Square 6")
-if s_5 <= s_6:
-    print("Square 5 <= Square 6")
-if s_5 == s_6:
-    print("Square 5 == Square 6")
-if s_5 != s_6:
-    print("Square 5 != Square 6")
-if s_5 > s_6:
-    print("Square 5 > Square 6")
-if s_5 >= s_6:
-    print("Square 5 >= Square 6")
