@@ -1,0 +1,101 @@
+Test case for the ``0-add_integer`` module
+======================
+
+The 0-add_integer take tow integer number (if the number is of type float it convert it to a integer) and return the sum of them.
+
+Usage:
+-------------------
+-------------------
+
+Importing the add_integer function from the 0-add_integer module:
+  	>>> add_integer = __import__('0-add_integer').add_integer
+
+Adding two positive integers:
+    >>> add_integer(1, 2)
+    3
+
+Adding positive and negative integers:
+    >>> add_integer(100, -2)
+    98
+
+Adding two positive integers:
+    >>> add_integer(-100, -2)
+    -102
+
+Adding two integers using the default value of the second params:
+    >>> add_integer(2)
+    100
+
+Adding a float number to a integer:
+    >>> add_integer(100.3, -2)
+    98
+
+Adding two negative float number:
+    >>> add_integer(-100.3, -2.5)
+    -102
+
+Adding a string to an integer:
+    >>> add_integer("School", 10)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Adding a string to an integer:
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+Adding two strings to each others:
+    >>> add_integer("Hy", "School")
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Adding two arrays to each others:
+    >>> add_integer([1], [2])
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Adding a tuple to an integer:
+    >>> add_integer((1,2))
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Check for None:
+    >>> add_integer(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Call the add_integer function with no arguments:
+    >>> add_integer()
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Call the add_integer function with more than 2 arguments:
+    >>> add_integer(10, 20, 10)
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Call the add_integer function and try to cast a string to an int inside it:
+    >>> add_integer(int("hello"))
+    Traceback (most recent call last):
+        ...
+    ValueError: invalid literal for int() with base 10: 'hello'
+
+ValueError:
+		>>> add_integer(float("nan"))
+		Traceback (most recent call last):
+		...
+		ValueError: cannot convert float NaN to integer
+
+OverflowError:
+    >>> add_integer(float("inf"))
+    Traceback (most recent call last):
+        ...
+    OverflowError: cannot convert float infinity to integer
