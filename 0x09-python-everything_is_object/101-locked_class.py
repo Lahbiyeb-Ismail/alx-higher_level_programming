@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-"""A class that prevents dynamically creating new attributes, except for 'first_name'"""
+"""A class that prevents dynamically creating new attributes, 
+except for 'first_name'
+"""
 
 
 class LockedClass(object):
     """
-    A class that prevents dynamically creating new attributes, except for 'first_name'.
+    A class that prevents dynamically creating new attributes,
+        except for 'first_name'.
 
     This class uses __slots__ and overrides __setattr__ to restrict setting
     new attributes. This locks down the class's instances from having arbitrary
