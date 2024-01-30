@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""A class that prevents dynamically creating new attributes, except for 'first_name'"""
+
+
 class LockedClass(object):
     """
     A class that prevents dynamically creating new attributes, except for 'first_name'.
