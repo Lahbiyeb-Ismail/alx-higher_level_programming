@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-
-"""
-Empty class that can be used as a base class for other classes.
-"""
+"""empty BaseGeometry class"""
 
 
 class BaseGeometry:
+    """This is an empty class"""
+
     pass
