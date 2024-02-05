@@ -6,9 +6,11 @@ Class MyInt that inherits from int
 
 class MyInt(int):
     """
-    A class representing a rebel integer with inverted equality operators.
+    A class representing a rebel integer with inverted
+        equality operators.
 
-    This class inherits from the built-in int class but has the == and != operators inverted.
+    This class inherits from the built-in int class but
+        has the == and != operators inverted.
 
     Methods:
     --------
