@@ -2,57 +2,40 @@
 """ Module to print status code """
 import sys
 
+# Define variables to store metrics
+total_file_size = 0
+status_code_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 
-class Magic:
-    """Class to generates instances with dict and size"""
+try:
+    line_count = 0
+    for line in sys.stdin:
+        # Increment line count
+        line_count += 1
 
-    def __init__(self):
-        """Init method"""
-        self.dic = {}
-        self.size = 0
+        # Split the line by spaces
+        parts = line.split()
 
-    def init_dic(self):
-        """Initialize dict"""
-        self.dic["200"] = 0
-        self.dic["301"] = 0
-        self.dic["400"] = 0
-        self.dic["401"] = 0
-        self.dic["403"] = 0
-        self.dic["404"] = 0
-        self.dic["405"] = 0
-        self.dic["500"] = 0
+        # Extract file size and status code
+        file_size = int(parts[-1])
+        status_code = int(parts[-2])
 
-    def add_status_code(self, status):
-        """add repeated number to the status code"""
-        if status in self.dic:
-            self.dic[status] += 1
+        # Update total file size
+        total_file_size += file_size
 
-    def print_info(self, sig=0, frame=0):
-        """print status code"""
-        print("File size: {:d}".format(self.size))
-        for key in sorted(self.dic.keys()):
-            if self.dic[key] is not 0:
-                print("{}: {:d}".format(key, self.dic[key]))
+        # Update status code count
+        if status_code in status_code_count:
+            status_code_count[status_code] += 1
 
+        # Print statistics every 10 lines
+        if line_count % 10 == 0:
+            print("Total file size:", total_file_size)
+            for code in sorted(status_code_count.keys()):
+                if status_code_count[code] > 0:
+                    print(f"{code}: {status_code_count[code]}")
 
-if __name__ == "__main__":
-    magic = Magic()
-    magic.init_dic()
-    nlines = 0
-
-    try:
-        for line in sys.stdin:
-            if nlines % 10 == 0 and nlines is not 0:
-                magic.print_info()
-
-            try:
-                list_line = [x for x in line.split(" ") if x.strip()]
-                magic.add_status_code(list_line[-2])
-                magic.size += int(list_line[-1].strip("\n"))
-            except:
-                pass
-            nlines += 1
-    except KeyboardInterrupt:
-        magic.print_info()
-        raise
-    magic.print_info()
+except KeyboardInterrupt:
+    # Print final statistics upon keyboard interruption
+    print("Total file size:", total_file_size)
+    for code in sorted(status_code_count.keys()):
+        if status_code_count[code] > 0:
+            print(f"{code}: {status_code_count[code]}")
