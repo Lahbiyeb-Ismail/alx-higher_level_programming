@@ -64,7 +64,8 @@ class Student:
         Reloads attributes of the object from a JSON dictionary.
 
         Args:
-            json (dict): A dictionary containing attribute-value pairs to reload.
+            json (dict): A dictionary containing attribute-value
+                        pairs to reload.
 
         Returns:
             None
