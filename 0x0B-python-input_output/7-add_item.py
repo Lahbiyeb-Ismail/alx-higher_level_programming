@@ -8,14 +8,19 @@ and then save them to a file.
 import sys
 
 if __name__ == "__main__":
-    save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
-    load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
+    # Importing the functions from the respective modules
+    save_to = __import__("5-save_to_json_file").save_to_json_file
+    load_from = __import__("6-load_from_json_file").load_from_json_file
 
     try:
-        items = load_from_json_file("add_item.json")
+        # Attempting to load existing items from the JSON file
+        items = load_from("add_item.json")
     except FileNotFoundError:
         items = []
 
+    # Extending the list of items with the command line
+    # arguments (excluding the script name)
     items.extend(sys.argv[1:])
 
-    save_to_json_file(items, "add_item.json")
+    # Saving the updated list of items back to the JSON file
+    save_to(items, "add_item.json")
