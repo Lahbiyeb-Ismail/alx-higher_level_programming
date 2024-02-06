@@ -42,10 +42,22 @@ class Student:
             dict: A dictionary containing the specified attributes
                         of the Student instance.
         """
-        if attrs is None:
-            return self.__dict__
-        else:
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+        obj = self.__dict__.copy()
+        if type(attrs) is list:
+
+            for item in attrs:
+                if type(item) is not str:
+                    return obj
+
+            d_list = {}
+
+            for iatr in range(len(attrs)):
+                for satr in obj:
+                    if attrs[iatr] == satr:
+                        d_list[satr] = obj[satr]
+            return d_list
+
+        return obj
 
     def reload_from_json(self, json):
         """
