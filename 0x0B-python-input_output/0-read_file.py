@@ -11,7 +11,9 @@ def read_file(filename=""):
     Reads a text file (UTF8) and prints it to stdout.
 
     Args:
-        filename (str, optional): The name or path of the file to be read. Defaults to an empty string.
+        filename (str, optional): The name or path of
+                the file to be read. Defaults to an
+                                empty string.
 
     Returns:
         None
