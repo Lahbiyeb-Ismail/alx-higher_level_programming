@@ -29,8 +29,6 @@ def read_file(file_name=""):
     Example:
         read_file("example.txt")
     """
-    try:
-        with open(file_name, "r", encoding="utf-8") as f:
-            print(f.read())
-    except Exception as e:
-        print(e)
+
+    with open(file_name, "r", encoding="utf-8") as f:
+        print(f.read())
