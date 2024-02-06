@@ -11,8 +11,10 @@ def save_to_json_file(my_obj, filename):
     Writes a Python object to a JSON file.
 
     Args:
-        my_obj (any): The Python object to be written to the JSON file.
-        filename (str): The name or path of the JSON file to be written.
+        my_obj (any): The Python object to be written
+                  to the JSON file.
+        filename (str): The name or path of the JSON
+                file to be written.
 
     Returns:
         None
