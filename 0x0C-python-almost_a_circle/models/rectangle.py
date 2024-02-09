@@ -56,8 +56,7 @@ class Rectangle(Base):
         """
         Returns a string representation of the Rectangle object.
         """
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - 
-                {self.width}/{self.height}"
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
     def validate_att(self, att_name, att_value):
         """
@@ -188,5 +187,6 @@ class Rectangle(Base):
         if self.width == 0 or self.height == 0:
             print("")
         else:
+            print("\n" * self.y, end="")
             for _ in range(self.height):
-                print("#" * self.width)
+                print(" " * self.x + "#" * self.width)
