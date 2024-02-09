@@ -52,6 +52,13 @@ class Rectangle(Base):
         self.validate_att("y", y)
         self.__y = y
 
+    def __str__(self):
+        """
+        Returns a string representation of the Rectangle object.
+        """
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - 
+                {self.width}/{self.height}"
+
     def validate_att(self, att_name, att_value):
         """
         Validates the attribute value.
