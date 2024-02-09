@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Rectangle class that represent a rectangle shape
+Rectangle class that represents a rectangle shape
 with width, height, and position.
 """
 
@@ -10,8 +10,7 @@ from base import Base
 
 class Rectangle(Base):
     """
-    Represents a rectangle shape with width,
-        height, and position.
+    Represents a rectangle shape with width, height, and position.
 
     Attributes:
         width (int): The width of the rectangle.
@@ -21,8 +20,8 @@ class Rectangle(Base):
         y (int): The y-coordinate of the top-left
                 corner of the rectangle.
         id (int): An optional identifier for the rectangle.
-                If not provided, a unique identifier will
-                                be assigned automatically.
+                If not provided, a unique identifier will be
+                                assigned automatically.
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -32,21 +31,51 @@ class Rectangle(Base):
         Args:
             width (int): The width of the rectangle.
             height (int): The height of the rectangle.
-            x (int, optional): The x-coordinate of the
-                        top-left corner of the rectangle.
-            y (int, optional): The y-coordinate of the
-                        top-left corner of the rectangle.
-            id (int, optional): An optional identifier for
-                        the rectangle.
+            x (int, optional): The x-coordinate of the top-left
+                        corner of the rectangle. Defaults to 0.
+            y (int, optional): The y-coordinate of the top-left
+                        corner of the rectangle. Defaults to 0.
+            id (int, optional): An optional identifier for the rectangle.
+                        If not provided, a unique identifier will be assigned
+                                                automatically.
 
         Returns:
             None
         """
         super().__init__(id)
+        self.validate_att("width", width)
         self.__width = width
+        self.validate_att("height", height)
         self.__height = height
+        self.validate_att("x", x)
         self.__x = x
+        self.validate_att("y", y)
         self.__y = y
+
+    def validate_att(self, att_name, att_value):
+        """
+        Validates the attribute value.
+
+        Args:
+            att_name (str): The name of the attribute.
+            att_value (int): The value of the attribute
+                        to be validated.
+
+        Raises:
+            TypeError: If the attribute value is
+                        not an integer.
+            ValueError: If the attribute value is
+                        not within acceptable range.
+
+        Returns:
+            None
+        """
+        if not isinstance(att_value, int):
+            raise TypeError(f"{att_name} must be an integer")
+        if (att_name == "width" or att_name == "height") and att_value <= 0:
+            raise ValueError(f"{att_name} must be > 0")
+        if (att_name == "x" or att_name == "y") and att_value < 0:
+            raise ValueError(f"{att_name} must be >= 0")
 
     @property
     def width(self):
