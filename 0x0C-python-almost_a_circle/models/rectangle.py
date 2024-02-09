@@ -214,7 +214,8 @@ class Rectangle(Base):
         Returns the dictionary representation of the Rectangle.
 
         Returns:
-            dict: A dictionary containing the attributes of the Rectangle.
+            dict: A dictionary containing the attributes of
+            the Rectangle.
         """
         return {
             "id": self.id,
