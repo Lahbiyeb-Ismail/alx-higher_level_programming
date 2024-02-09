@@ -47,3 +47,21 @@ class Square(Rectangle):
         Returns a string representation of the Square object.
         """
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+
+    @property
+    def size(self):
+        """
+        Returns the size of the square, which is equal to
+                both the width and height.
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """
+        Sets the size of the square, which is equal to both
+                the width and height.
+        """
+        self.validate_att("width", value)
+        self.width = value
+        self.height = value
