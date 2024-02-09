@@ -4,6 +4,8 @@
 Base class for creating objects with unique identifiers
 """
 
+import json
+
 
 class Base:
     """
@@ -37,3 +39,13 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+        Retrieves a dictionary representation of a Base instance.
+        """
+        if list_dictionaries is None or len(list_dictionaries) == 0:
+            return "[]"
+        else:
+            return json.dumps(list_dictionaries)
