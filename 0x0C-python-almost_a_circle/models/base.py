@@ -22,7 +22,7 @@ class Base:
 
     __nb_objects = 0
 
-    def __init__(self, id=None) -> None:
+    def __init__(self, id=None):
         """
         Initializes a Base object with a unique identifier.
 
