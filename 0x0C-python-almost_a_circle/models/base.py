@@ -4,6 +4,7 @@
 Base class for creating objects with unique identifiers
 """
 
+import csv
 import json
 
 
@@ -99,3 +100,46 @@ class Base:
 
         json_list = Base.from_json_string(json_string)
         return [cls.create(**d) for d in json_list]
+
+    def to_csv(self):
+        """Converts instance attributes to CSV format"""
+        pass
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes list of objects to CSV"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline="") as csvfile:
+            writer = csv.writer(csvfile)
+            for obj in list_objs:
+                if cls.__name__ == "Rectangle":
+                    writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                elif cls.__name__ == "Square":
+                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes CSV to list of objects"""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r", newline="") as csvfile:
+                reader = csv.reader(csvfile)
+                objs = []
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        objs.append(
+                            cls(
+                                int(row[0]),
+                                int(row[1]),
+                                int(row[2]),
+                                int(row[3]),
+                                int(row[4]),
+                            )
+                        )
+                    elif cls.__name__ == "Square":
+                        objs.append(
+                            cls(int(row[0]), int(row[1]), int(row[2]), int(row[3]))
+                        )
+                return objs
+        except FileNotFoundError:
+            return []
