@@ -86,3 +86,16 @@ class Base:
         # Use update with dictionary as kwargs
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances from a JSON file"""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as f:
+                json_string = f.read()
+        except FileNotFoundError:
+            return []
+
+        json_list = Base.from_json_string(json_string)
+        return [cls.create(**d) for d in json_list]
