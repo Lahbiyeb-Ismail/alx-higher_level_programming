@@ -96,3 +96,7 @@ class TestBaseMethods(unittest.TestCase):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), "[]")
+
+
+if __name__ == "__main__":
+    unittest.main()
