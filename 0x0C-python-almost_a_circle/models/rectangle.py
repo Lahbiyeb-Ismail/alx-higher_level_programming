@@ -42,15 +42,11 @@ class Rectangle(Base):
         Returns:
             None
         """
-        super().__init__(id)
-        self.validate_att("width", width)
         self.__width = width
-        self.validate_att("height", height)
         self.__height = height
-        self.validate_att("x", x)
         self.__x = x
-        self.validate_att("y", y)
         self.__y = y
+        super().__init__(id)
 
     def __str__(self):
         """
@@ -58,31 +54,6 @@ class Rectangle(Base):
         """
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
                 {self.width}/{self.height}"
-
-    def validate_att(self, att_name, att_value):
-        """
-        Validates the attribute value.
-
-        Args:
-            att_name (str): The name of the attribute.
-            att_value (int): The value of the attribute
-                        to be validated.
-
-        Raises:
-            TypeError: If the attribute value is
-                        not an integer.
-            ValueError: If the attribute value is
-                        not within acceptable range.
-
-        Returns:
-            None
-        """
-        if not isinstance(att_value, int):
-            raise TypeError(f"{att_name} must be an integer")
-        if (att_name == "width" or att_name == "height") and att_value <= 0:
-            raise ValueError(f"{att_name} must be > 0")
-        if (att_name == "x" or att_name == "y") and att_value < 0:
-            raise ValueError(f"{att_name} must be >= 0")
 
     @property
     def width(self):
@@ -102,6 +73,11 @@ class Rectangle(Base):
         Returns:
             None
         """
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -122,6 +98,11 @@ class Rectangle(Base):
         Returns:
             None
         """
+        if type(value) is not int:
+            raise TypeError("height must be an integer")
+
+        if value <= 0:
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
@@ -144,6 +125,11 @@ class Rectangle(Base):
         Returns:
             None
         """
+        if type(value) is not int:
+            raise TypeError("x must be an integer")
+
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
@@ -166,6 +152,11 @@ class Rectangle(Base):
         Returns:
             None
         """
+        if type(value) is not int:
+            raise TypeError("y must be an integer")
+
+        if value <= 0:
+            raise ValueError("y must be >= 0")
         self.__y = value
 
     def area(self):
