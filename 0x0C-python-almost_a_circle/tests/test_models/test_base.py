@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Module for test Base class """
+import os.path
 import unittest
 from io import StringIO
 from unittest import TestCase

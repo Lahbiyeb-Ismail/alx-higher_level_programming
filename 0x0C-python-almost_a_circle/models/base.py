@@ -6,6 +6,7 @@ Base class for creating objects with unique identifiers
 
 import csv
 import json
+import os.path
 
 
 class Base:
@@ -104,50 +105,60 @@ class Base:
         json_list = Base.from_json_string(json_string)
         return [cls.create(**d) for d in json_list]
 
-    def to_csv(self):
-        """Converts instance attributes to CSV format"""
-        pass
-
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """Serializes list of objects to CSV"""
-        filename = cls.__name__ + ".csv"
-        with open(filename, "w", newline="") as csvfile:
-            writer = csv.writer(csvfile)
-            for o in list_objs:
-                if cls.__name__ == "Rectangle":
-                    writer.writerow([o.id, o.width, o.height, o.x, o.y])
-                elif cls.__name__ == "Square":
-                    writer.writerow([o.id, o.size, o.x, o.y])
+        """Method that saves a CSV file"""
+        filename = "{}.csv".format(cls.__name__)
+
+        if cls.__name__ == "Rectangle":
+            list_dic = [0, 0, 0, 0, 0]
+            list_keys = ["id", "width", "height", "x", "y"]
+        else:
+            list_dic = ["0", "0", "0", "0"]
+            list_keys = ["id", "size", "x", "y"]
+
+        matrix = []
+
+        if not list_objs:
+            pass
+        else:
+            for obj in list_objs:
+                for kv in range(len(list_keys)):
+                    list_dic[kv] = obj.to_dictionary()[list_keys[kv]]
+                matrix.append(list_dic[:])
+
+        with open(filename, "w") as writeFile:
+            writer = csv.writer(writeFile)
+            writer.writerows(matrix)
 
     @classmethod
     def load_from_file_csv(cls):
-        """Deserializes CSV to list of objects"""
-        filename = cls.__name__ + ".csv"
-        try:
-            with open(filename, "r", newline="") as csvfile:
-                reader = csv.reader(csvfile)
-                objs = []
-                for row in reader:
-                    if cls.__name__ == "Rectangle":
-                        objs.append(
-                            cls(
-                                int(row[0]),
-                                int(row[1]),
-                                int(row[2]),
-                                int(row[3]),
-                                int(row[4]),
-                            )
-                        )
-                    elif cls.__name__ == "Square":
-                        objs.append(
-                            cls(
-                                int(row[0]),
-                                int(row[1]),
-                                int(row[2]),
-                                int(row[3]),
-                                )
-                        )
-                return objs
-        except FileNotFoundError:
+        """Method that loads a CSV file"""
+        filename = "{}.csv".format(cls.__name__)
+
+        if os.path.exists(filename) is False:
             return []
+
+        with open(filename, "r") as readFile:
+            reader = csv.reader(readFile)
+            csv_list = list(reader)
+
+        if cls.__name__ == "Rectangle":
+            list_keys = ["id", "width", "height", "x", "y"]
+        else:
+            list_keys = ["id", "size", "x", "y"]
+
+        matrix = []
+
+        for csv_elem in csv_list:
+            dict_csv = {}
+            for kv in enumerate(csv_elem):
+                dict_csv[list_keys[kv[0]]] = int(kv[1])
+            matrix.append(dict_csv)
+
+        list_ins = []
+
+        for index in range(len(matrix)):
+            list_ins.append(cls.create(**matrix[index]))
+
+        return list_ins
