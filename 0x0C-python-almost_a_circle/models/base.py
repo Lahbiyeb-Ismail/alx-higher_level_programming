@@ -77,7 +77,10 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Returns an instance with attributes set from dictionary"""
+        """
+        Returns an instance with attributes set
+        from dictionary
+        """
         # Create dummy instance
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
@@ -111,11 +114,11 @@ class Base:
         filename = cls.__name__ + ".csv"
         with open(filename, "w", newline="") as csvfile:
             writer = csv.writer(csvfile)
-            for obj in list_objs:
+            for o in list_objs:
                 if cls.__name__ == "Rectangle":
-                    writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                    writer.writerow([o.id, o.width, o.height, o.x, o.y])
                 elif cls.__name__ == "Square":
-                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+                    writer.writerow([o.id, o.size, o.x, o.y])
 
     @classmethod
     def load_from_file_csv(cls):
@@ -138,7 +141,12 @@ class Base:
                         )
                     elif cls.__name__ == "Square":
                         objs.append(
-                            cls(int(row[0]), int(row[1]), int(row[2]), int(row[3]))
+                            cls(
+                                int(row[0]),
+                                int(row[1]),
+                                int(row[2]),
+                                int(row[3]),
+                                )
                         )
                 return objs
         except FileNotFoundError:
