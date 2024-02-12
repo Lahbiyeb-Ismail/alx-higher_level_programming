@@ -53,11 +53,9 @@ class Rectangle(Base):
         self.__y = y
 
     def __str__(self):
-        """
-        Returns a string representation of the Rectangle object.
-        """
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
-                {self.width}/{self.height}"
+        """Defines a format for the string representation of the class"""
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - \
+{self.__width}/{self.__height}"
 
     def validate_att(self, att_name, att_value):
         """
