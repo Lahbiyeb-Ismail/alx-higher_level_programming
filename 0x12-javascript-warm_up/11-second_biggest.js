@@ -2,7 +2,7 @@
 
 const argv = process.argv;
 
-function second_biggest (arr) {
+function secondBiggest (arr) {
   if (!arr || arr.length === 1) {
     console.log('0');
   } else {
@@ -11,4 +11,4 @@ function second_biggest (arr) {
   }
 }
 
-second_biggest(argv.slice(2));
+secondBiggest(argv.slice(2));
