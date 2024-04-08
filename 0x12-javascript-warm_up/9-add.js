@@ -7,4 +7,4 @@ function add(a, b) {
   console.log(a + b);
 }
 
-add(num1, num2);
+if (num1 && num2) add(num1, num2);
