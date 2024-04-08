@@ -3,7 +3,7 @@
 const argv = process.argv;
 
 function secondBiggest (arr) {
-  if (!arr || arr.length === 1) {
+  if (!arr || arr.length <= 1) {
     console.log('0');
   } else {
     arr.sort((a, b) => b - a);
