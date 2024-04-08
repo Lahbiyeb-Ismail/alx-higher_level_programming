@@ -2,8 +2,8 @@
 
 const argv = process.argv;
 
-function factorial (n) {
-  if (!n || n === 1 || typeof n === NaN) return 1;
+function factorial(n) {
+  if (!n || n === 1 || isNaN(n)) return 1;
 
   return n * factorial(n - 1);
 }
