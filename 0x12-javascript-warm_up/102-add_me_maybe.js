@@ -2,5 +2,5 @@
 
 exports.addMeMyabe = function (number, theFunction) {
   number++;
-  theFunction(number);
+  theFunction();
 };
