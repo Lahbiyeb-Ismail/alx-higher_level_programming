@@ -1,6 +1,5 @@
 #!/usr/bin/node
 
 exports.addMeMyabe = function (number, theFunction) {
-  number++;
-  theFunction();
+  theFunction(number + 1);
 };
