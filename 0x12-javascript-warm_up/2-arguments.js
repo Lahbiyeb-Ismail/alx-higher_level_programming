@@ -3,7 +3,7 @@
 const args = process.args;
 let message;
 
-if (!args) {
+if (args.length === 0) {
   message = 'No argument';
 } else if (args.length === 1) {
   message = 'Argument found';
