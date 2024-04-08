@@ -1,9 +1,14 @@
 #!/usr/bin/node
 
 const args = process.args;
+let message;
 
 if (!args) {
-  console.log('No argument');
+  message = 'No argument';
+} else if (args.length === 1) {
+  message = 'Argument found';
 } else {
-  console.log('Argument found');
+  message = 'Arguments found';
 }
+
+console.log(message);
