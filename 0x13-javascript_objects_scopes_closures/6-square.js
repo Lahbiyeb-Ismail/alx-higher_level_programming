@@ -4,7 +4,9 @@ const Square5 = require('./5-rectangle.js');
 
 class Square extends Square5 {
   charPrint (c) {
-    const char = c ? c : 'X';
+    let char = '';
+
+    c ? (char = c) : (char = 'X');
 
     for (let i = 0; i < this.height; i++) {
       let str = '';
