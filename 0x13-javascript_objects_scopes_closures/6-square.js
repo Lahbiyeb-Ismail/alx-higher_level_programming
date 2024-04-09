@@ -1,9 +1,9 @@
 #!/usr/bin/node
 
-const Square5 = require('./5-rectangle.js');
+const Square5 = require('./5-square.js');
 
 class Square extends Square5 {
-  charPrint (c) {
+  charPrint(c) {
     let char = '';
 
     c ? (char = c) : (char = 'X');
