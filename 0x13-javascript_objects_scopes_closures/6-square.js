@@ -1,17 +1,17 @@
 #!/usr/bin/node
 
-const Rectangle = require('./4-rectangle.js');
+const Square5 = require('./5-rectangle.js');
 
-class Square extends Rectangle {
+class Square extends Square5 {
   constructor (size) {
     super(size, size);
   }
 
   charPrint (c) {
     if (c) {
-      for (let i = 0; i < size; i++) {
+      for (let i = 0; i < this.size; i++) {
         let str = '';
-        for (let j = 0; j < size; j++) {
+        for (let j = 0; j < this.size; j++) {
           str += c;
         }
 
