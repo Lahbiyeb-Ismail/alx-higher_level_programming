@@ -18,8 +18,8 @@ if __name__ == "__main__":
 
     cur = conn.cursor()
 
-    sql_query = "SELECT * FROM cities INNER JOIN states \
-                ON cities.state_id = states.id"
+    sql_query = "SELECT cities.id, cities.name, state.name\
+                FROM cities INNER JOIN states ON cities.state_id = states.id"
 
     cur.execute(sql_query)
 
