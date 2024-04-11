@@ -20,9 +20,8 @@ if __name__ == "__main__":
 
     cur = conn.cursor()
 
-    sql_query = "SELECT * FROM states WHERE name='{}'".format(state_name)
-
-    cur.execute(sql_query)
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
+                .format(state_name))
 
     query_rows = cur.fetchall()
     for row in query_rows:
