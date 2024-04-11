@@ -19,7 +19,10 @@ if __name__ == "__main__":
                            database=db_name, port=3306)
 
     cur = conn.cursor()
-    cur.execute(f"SELECT * FROM states WHERE name={state_name}")
+
+    sql_query = "SELECT * FROM states WHERE name=%s"
+
+    cur.execute(sql_query, (state_name,))
 
     query_rows = cur.fetchall()
     for row in query_rows:
