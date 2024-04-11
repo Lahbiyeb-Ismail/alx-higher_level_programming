@@ -21,9 +21,9 @@ if __name__ == "__main__":
 
     session = orm.Session(engine)
 
-    matched_state = session.query(State).filter(State.name == state_name).first()
-    if matched_state:
-        print("{}".format(matched_state.id))
+    state = session.query(State).filter(State.name == state_name).first()
+    if state:
+        print("{}".format(state.id))
     else:
         print("Not found")
 
