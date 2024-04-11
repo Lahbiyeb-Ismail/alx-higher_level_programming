@@ -20,9 +20,9 @@ if __name__ == "__main__":
 
     cur = conn.cursor()
 
-    sql_query = "SELECT * FROM states WHERE name=%s"
+    sql_query = "SELECT * FROM states WHERE name='{}'".format(state_name)
 
-    cur.execute(sql_query, (state_name,))
+    cur.execute(sql_query)
 
     query_rows = cur.fetchall()
     for row in query_rows:
