@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     session = orm.Session(engine)
 
-    matched_state = session.query(State).filter(State.name.match(state_name))
+    matched_state = session.query(State).filter(State.name == state_name)
     if matched_state:
         print("{}".format(matched_state.id))
     else:
