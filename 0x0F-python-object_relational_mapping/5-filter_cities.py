@@ -26,11 +26,9 @@ if __name__ == "__main__":
     cur.execute(sql_query)
 
     query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
-
-        if row != query_rows[-1]:
-            print(",")
+    
+    tmp = list(row[0] for row in query_rows)
+    print(*tmp, sep=", ")
 
     cur.close()
     conn.close()
