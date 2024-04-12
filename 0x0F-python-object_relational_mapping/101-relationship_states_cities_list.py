@@ -21,13 +21,13 @@ if __name__ == "__main__":
 
     session = orm.Session(engine)
 
-    all_states = session.query(State).join(City).order_by(State.id, City.id).all()
+    states = session.query(State).join(City).order_by(State.id, City.id).all()
 
-    for state in all_states:
+    for state in states:
         print("{}: {}".format(state.id, state.name))
 
         for city in state.cities:
-            print("\t{}: {}".format(city.id, city.name))
+            print("   {}: {}".format(city.id, city.name))
 
     session.commit()
     session.close()
