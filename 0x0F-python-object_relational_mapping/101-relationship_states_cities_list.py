@@ -21,7 +21,9 @@ if __name__ == "__main__":
 
     session = orm.Session(engine)
 
-    states = session.query(State).join(City).order_by(State.id, City.id).all()
+    states_query = session.query(State)
+
+    states = states_query.outerjoin(City).order_by(State.id, City.id).all()
 
     for state in states:
         print("{}: {}".format(state.id, state.name))
