@@ -8,13 +8,12 @@ from sqlalchemy import (create_engine, orm)
 
 if __name__ == "__main__":
     user = sys.argv[1]
-    password = sys.argv[2]
+    pwd = sys.argv[2]
     db_name = sys.argv[3]
 
-    db_link = 'mysql+mysqldb://{}:\
-              {}@localhost/{}'.format(user, password, db_name)
+    db_url = 'mysql+mysqldb://{}:{}@localhost/{}'.format(user, pwd, db_name)
 
-    engine = create_engine(db_link, pool_pre_ping=True)
+    engine = create_engine(db_url, pool_pre_ping=True)
 
     Base.metadata.create_all(engine)
 
