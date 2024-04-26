@@ -21,14 +21,13 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    url = "http://0.0.0.0:5000/search_user"
-
-    if not argv[1]:
+    if len(argv) == 1:
         param = ""
     else:
         param = argv[1]
 
     payload = {"q": param}
+    url = "http://0.0.0.0:5000/search_user"
 
     req = requests.post(url, data=payload)
 
