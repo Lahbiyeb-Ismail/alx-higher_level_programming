@@ -30,7 +30,11 @@ if __name__ == "__main__":
     req = requests.get(github_api_url)
     res = req.json()
 
-    for i in range(10):
-        sha = res[i].get("sha")
-        author_name = res[i].get("commit").get("author").get("name")
-        print(f"{sha}: {author_name}")
+    try:
+        for i in range(10):
+            sha = res[i].get("sha")
+            author_name = res[i].get("commit").get("author").get("name")
+
+            print("{}: {}".format(sha, author_name))
+    except IndexError:
+        pass
