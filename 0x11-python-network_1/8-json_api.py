@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     payload = {"q": param}
 
-    req = requests.post(url, params=payload)
+    req = requests.post(url, data=payload)
 
     try:
         res = req.json()
