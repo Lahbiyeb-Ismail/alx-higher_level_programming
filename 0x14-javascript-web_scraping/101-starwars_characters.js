@@ -8,26 +8,39 @@ const filmId = args[0];
 
 const apiUrl = `https://swapi-api.alx-tools.com/api/films/${filmId}`;
 
-const getCharacterName = (url) => {
-  request.get(url, (err, response) => {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log(JSON.parse(response.body).name);
-  });
-};
-
 const getStarWarsCharacters = () => {
   request.get(apiUrl, (err, response) => {
     if (err) {
       console.log(err);
+      return;
     }
 
     const characters = JSON.parse(response.body).characters;
-    for (let i = 0; i < characters.length; i++) {
-      getCharacterName(characters[i]);
-    }
+
+    const printCharacterName = (url) => {
+      return new Promise((resolve, reject) => {
+        request.get(url, (err, response) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(JSON.parse(response.body).name);
+          }
+        });
+      });
+    };
+
+    const fetchAndPrintCharacters = async () => {
+      for (let i = 0; i < characters.length; i++) {
+        try {
+          const name = await printCharacterName(characters[i]);
+          console.log(name);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
+    fetchAndPrintCharacters();
   });
 };
 
