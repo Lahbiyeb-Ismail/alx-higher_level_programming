@@ -14,7 +14,7 @@ $(document).ready(function () {
     }
   });
 
-  function fetchPrintTranslation() {
+  function fetchPrintTranslation () {
     const languageCode = $('INPUT#language_code').val();
     const url = `https://www.fourtonfish.com/hellosalut/hello/${languageCode}`;
 
